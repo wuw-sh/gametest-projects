@@ -1,0 +1,14 @@
+{
+    "format_version": 1,
+    "header": {
+        "name": "§bScripting MCPE (RE)",
+        "description": "By @wuw6248",
+        "uuid": "607bb1c3-7b36-4988-b7ae-8fa5fb597e2c",
+        "version": [0, 0, 1]
+    },
+    "modules": [{
+        "type": "resources",
+        "uuid": "967196f1-5662-4241-beeb-103b9daab46c",
+        "version": [0, 0, 1]
+    }]
+}

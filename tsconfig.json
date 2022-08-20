@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": [
+      "dom",
+      "es6",
+      "es2015",
+      "es2016",
+      "es2017",
+      "es2017.string",
+      "es2021"
+    ],
+    "strictPropertyInitialization": false,
+    "moduleResolution": "node",
+    "module": "es2020",
+    "declaration": false,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": false,
+    "pretty": true,
+    "allowUnreachableCode": true,
+    "allowUnusedLabels": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": false,
+    "noImplicitUseStrict": false,
+    "outDir": "build/",
+    "rootDir": ".",
+    "baseUrl": "behavior_packs/",
+    "listFiles": false,
+    "noEmitHelpers": true
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compileOnSave": false
+}

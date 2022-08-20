@@ -1,0 +1,33 @@
+{
+  "format_version": "1.19.2",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "text:text",
+      "materials": {
+        "default": "entity_alphablend",
+        "other": "entity_emissive_alpha"
+      },
+      "textures": {
+        "default": ""
+      },
+      "geometry": {
+        "default": "geometry.skeleton"
+      },
+      "scripts": {
+        "animate": [
+          "facing"
+        ]
+      },
+      "animations": {
+        "facing": "animation.facing"
+      },
+      "render_controllers": [
+        "controller.render.text"
+      ],
+      "spawn_egg": {
+        "texture": "text:text",
+        "texture_index": 0
+      }
+    }
+  }
+}

@@ -3,7 +3,7 @@
 ## Project About
 - This project is Gametest so it can be used on mobile or computer. This project is developed with TypeScript (ts) and compiled into JavaScript (js).
 
-- โปรเจคนี้เป็น Gametest เพื่อสามารถใช้ได้มือถือหรือคอม โปรเจคนี้พัฒนาขึ้นด้วยภาษา TypeScript (ts) แล้ว Compile เป็นภาษา JavaScript (js)
+- โปรเจคนี้เป็น Gametest เพื่อสามารถใช้ได้มือถือหรือคอม โปรเจคนี้พัฒนาขึ้นด้วยภาษา TypeScript (ts) แล้วแปลงเป็นภาษา JavaScript (js)
 ## Project Developer
 - 👨‍💻 Developer : `wuw.sh (pain)`
 - <img src="https://imgs.search.brave.com/dwDLTvAner6mjAuj64pg2I_hMBZQbC0corI8sX7hOlE/rs:fit:128:128:1/g:ce/aHR0cHM6Ly9jZG40/Lmljb25maW5kZXIu/Y29tL2RhdGEvaWNv/bnMvbG9nb3MtYW5k/LWJyYW5kcy81MTIv/Mzg3X1hib3hfbG9n/by0xMjgucG5n" title="Xbox" alt="Xbox" width="23" height="23"/>&nbsp; Xbox : [`wuwShPain`](https://account.xbox.com/en-us/profile?gamertag=wuwShPain)

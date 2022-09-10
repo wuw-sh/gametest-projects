@@ -8,11 +8,15 @@
       "is_experimental": false,
       "scripts": {
         "animate": [
-          "swing"
+          "swing",
+          "moving",
+          "grounded"
         ]
       },
       "animations": {
-        "swing": "controller.animation.swing"
+        "swing": "controller.animation.swing",
+        "moving": "controller.animation.moving",
+        "grounded": "controller.animation.grounded"
       }
     },
     "component_groups": {
@@ -212,11 +216,9 @@
           ]
         }
       },
-      "swing": {}
+      "swing": {},
+      "moving": {},
+      "grounded": {}
     }
   }
 }
-
-
-
-

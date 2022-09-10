@@ -6,7 +6,7 @@ export interface Timer {
     og?: number
 }
 
-export class Timers {
+export const Timers = class timers {
     protected _runtimeId = 0
     protected _intervals = new Map<number, Timer>()
     protected _timeouts = new Map<number, Timer>()
@@ -57,6 +57,5 @@ export class Timers {
 
     public clearTimeout = (id: number): void => {
         this._timeouts.delete(id)
-
     }
 }

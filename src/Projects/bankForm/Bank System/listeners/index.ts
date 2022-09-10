@@ -1,2 +1,2 @@
-export {tagUpdateListener} from './tagUpdate.js';
-export {itemUseListener} from './itemUse.js';
+export * from './tagUpdate.js'
+export * from './itemUse.js'

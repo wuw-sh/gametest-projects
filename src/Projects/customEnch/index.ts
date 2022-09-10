@@ -8,7 +8,7 @@ import {
     Player,
     world
 } from "mojang-minecraft"
-import {onItemChangeSlot, sendMessage} from "../API/index.js";
+import {API} from "../API/index.js";
 
 const efType = MinecraftEffectTypes
 const findTag = (player: Player, tag: string) => player.getTags().filter(x => x.startsWith('ench:')).find(x => x.includes(tag)) ?? ''
@@ -101,7 +101,7 @@ world.events.beforeChat.subscribe(chat => {
         const help = cmds.help
         const enchL = cmds.enchantList
         const ench = cmds.enchant
-        const helpMsg = (header: string, cmd: { usage: string[]; name: string; alias: string; desc: string }) => sendMessage(pl, `${help.header(`help §e${header}`)}§eCommand§7: §f${cmd.name}\n§eAlias§7: §f${cmd.alias}\n§eDescription§7: §f${cmd.desc}\n§eUsage§7:§f\n${cmd.usage.map(x => `   ${x}`).join('\n')}`)
+        const helpMsg = (header: string, cmd: { usage: string[]; name: string; alias: string; desc: string }) => API.sendMessage(pl, `${help.header(`help §e${header}`)}§eCommand§7: §f${cmd.name}\n§eAlias§7: §f${cmd.alias}\n§eDescription§7: §f${cmd.desc}\n§eUsage§7:§f\n${cmd.usage.map(x => `   ${x}`).join('\n')}`)
         if (args[0] === help.name || args[0] === help.alias) {
             chat.cancel = true
             if (args[1] === enchL.name || args[1] === enchL.alias) {
@@ -109,20 +109,20 @@ world.events.beforeChat.subscribe(chat => {
             } else if (args[1] === ench.name || args[1] === ench.alias) {
                 return helpMsg('enchant', ench)
             }
-            sendMessage(pl, `${help.header('list (3)')}   §f-${help.name}[§bAlias§e: §a${help.alias}§f] §7${help.usage} - ${help.desc}\n   §f-${enchL.name}[§bAlias§e: §a${enchL.alias}§f] §7- ${enchL.desc}\n   §f-${ench.name}[§bAlias§e: §a${ench.alias}§f] §7${ench.usage[0]} - ${ench.desc}\n   §f-${ench.name}[§bAlias§e: §a${ench.alias}§f] §7${ench.usage[1]} - ${ench.desc}`)
+            API.sendMessage(pl, `${help.header('list (3)')}   §f-${help.name}[§bAlias§e: §a${help.alias}§f] §7${help.usage} - ${help.desc}\n   §f-${enchL.name}[§bAlias§e: §a${enchL.alias}§f] §7- ${enchL.desc}\n   §f-${ench.name}[§bAlias§e: §a${ench.alias}§f] §7${ench.usage[0]} - ${ench.desc}\n   §f-${ench.name}[§bAlias§e: §a${ench.alias}§f] §7${ench.usage[1]} - ${ench.desc}`)
         } else if (args[0] === enchL.name || args[0] === enchL.alias) {
             chat.cancel = true
-            sendMessage(pl, `§b--- Showing list of custom enchantments ---\n§f${cEnch.map(e => `§e- §f${e.id} §7(${e.name})`).join('\n')}`)
+            API.sendMessage(pl, `§b--- Showing list of custom enchantments ---\n§f${cEnch.map(e => `§e- §f${e.id} §7(${e.name})`).join('\n')}`)
         } else if (args[0] === ench.name || args[0] === ench.alias) {
             chat.cancel = true
             if (!args[1] || !args[2]) return helpMsg('enchant', ench)
             const inv = (pl.getComponent('minecraft:inventory') as EntityInventoryComponent).container
             const item = inv.getItem(pl.selectedSlot)
-            if (!item) return sendMessage(pl, '§cYou must have an item selected.')
+            if (!item) return API.sendMessage(pl, '§cYou must have an item selected.')
             const enchId = args[1]
-            if (!enchId || !cEnch.find(ench => ench.id === enchId)) return sendMessage(pl, `§cInvalid §denchantment id§c\nAt: "-${args[0]} >>${typeof enchId === 'undefined' ? '' : enchId}<<"\nUsage:\n   ${ench.usage[0]}\n   ${ench.usage[1]}`)
+            if (!enchId || !cEnch.find(ench => ench.id === enchId)) return API.sendMessage(pl, `§cInvalid §denchantment id§c\nAt: "-${args[0]} >>${typeof enchId === 'undefined' ? '' : enchId}<<"\nUsage:\n   ${ench.usage[0]}\n   ${ench.usage[1]}`)
             const amplifier = parseInt(args[2]) ? romanToInt(parseInt(args[2])) : romanToInt(args[2])
-            if (!amplifier || (amplifier < 1 || amplifier > 255)) return sendMessage(pl, `§cInvalid §bamplifier§c\nAt: "-${args[0]} ${enchId} >>${typeof args[2] === 'undefined' ? '' : args[2]}<<"\nUsage:\n   ${ench.usage[0]}\n   ${ench.usage[1]}`)
+            if (!amplifier || (amplifier < 1 || amplifier > 255)) return API.sendMessage(pl, `§cInvalid §bamplifier§c\nAt: "-${args[0]} ${enchId} >>${typeof args[2] === 'undefined' ? '' : args[2]}<<"\nUsage:\n   ${ench.usage[0]}\n   ${ench.usage[1]}`)
 
             const newItem = new ItemStack(Items.get(item.id), 1, 0)
             if (!item.nameTag) {
@@ -131,7 +131,7 @@ world.events.beforeChat.subscribe(chat => {
                 const enchs = item.nameTag.split('\n').splice(1)
                 const checkEnch = enchs.find(e => e.includes(titleCase(enchId, false, 0)))
                 const newEnch = `§7${titleCase(enchId, false, 0)} ${intToRoman(amplifier)}`
-                if (checkEnch === newEnch) return sendMessage(pl, '§cThis item already has this enchantment.')
+                if (checkEnch === newEnch) return API.sendMessage(pl, '§cThis item already has this enchantment.')
                 if (checkEnch) enchs.splice(enchs.indexOf(checkEnch), 1)
                 newItem.nameTag = `§b${titleCase(item.id, true, 0)}\n${enchs.join('\n')}\n§7${newEnch}`
             }
@@ -140,7 +140,7 @@ world.events.beforeChat.subscribe(chat => {
     }
 })
 
-onItemChangeSlot(data => {
+API.onItemChangeSlot(data => {
     const pl = data.player
     const oIt = data.oldItem
     const nIt = data.newItem
@@ -150,7 +150,7 @@ onItemChangeSlot(data => {
     const current = `§e(${nSl})§bCurrent Slot: §f${nIt?.id ?? '§cUndefined'}`
     const old = `§e(${oSl})§7Olded Slot: §f${oIt?.id ?? '§cUndefined'}`
     const sortSlot = [current, old].sort((a, b) => b.length - a.length)
-    sendMessage(pl, `${rainbow}\n${old}\n${' '.repeat(sortSlot[0].length / 2)}§aTo\n${current}`)
+    API.sendMessage(pl, `${rainbow}\n${old}\n${' '.repeat(sortSlot[0].length / 2)}§aTo\n${current}`)
     customEnch.forEach(cEnch => cEnch.call(pl).remove())
 })
 

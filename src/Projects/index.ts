@@ -1,7 +1,9 @@
-//import './superCalculator/index.js'
-import './bankForm/index.js'
+//export * from './API/index.js';
+
 //import './test/index.js'
-//import './API/index.js';
+
+//import './superCalculator/index.js'
+//import './bankForm/index.js'
 //import './random/index.js';
 //import './sitStair/index.js';
 //import './realTime/index.js';
@@ -13,3 +15,9 @@ import './bankForm/index.js'
 //import './ignoreBlock/index.js';
 //import './BankSystem/index.js';
 //import './Guild_Menu/index.js';
+//import './parkour_menu/index.js'
+//import './protectionStone/index.js'
+import  './cps/index.js'
+//import  './floatingItemNameTags/index.js'
+//import './TOYOTA/index.js'
+//import './ProjectileSpeed/index.js'

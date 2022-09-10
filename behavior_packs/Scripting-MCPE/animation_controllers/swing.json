@@ -9,7 +9,9 @@
               "scroll": "variable.attack_time > 0.50"
             }
           ],
-          "on_exit": ["@s swing"]
+          "on_exit": [
+            "@s swing"
+          ]
         },
         "scroll": {
           "transitions": [

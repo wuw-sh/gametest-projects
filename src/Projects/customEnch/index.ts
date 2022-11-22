@@ -1,5 +1,6 @@
 import {
     EffectType,
+    Entity,
     EntityInventoryComponent,
     Items,
     ItemStack,
@@ -176,7 +177,7 @@ world.events.entityHit.subscribe(data => {
         const attacker = data.entity as Player
         const getTags = attacker.getTags().filter(tag => tag.startsWith('ench:') && tag.includes('damage'))
         if (getTags.length === 0) return
-        const damager = data.hitEntity
+        const damager = data.hitEntity as Entity
         const damage = (tag: string) => damager.runCommand(`damage @s ${findTag(attacker, tag).split(' ')[1]} entity_attack entity ${attacker.nameTag}`)
         const particle = (particleName: string) => damager.dimension.spawnParticle(particleName, damager.location, new MolangVariableMap())
         getTags.map(tag => {

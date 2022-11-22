@@ -47,6 +47,7 @@ class api {
                     oldSlot: oldSlot.get(pl),
                     newSlot: slot
                 })
+                if (oldItem.get(pl) === item) return
                 if (!oldItem.has(pl) && item) {
                     callbackFunc()
                     return () => {

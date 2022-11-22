@@ -34,7 +34,7 @@
     "src/**/*"
   ],
   "exclude": [
-    "node_modules"
+    "../../../../../../../../../OneDrive/เอกสาร/MCPE-DEV/gametest-projects/node_modules"
   ],
   "compileOnSave": false
 }

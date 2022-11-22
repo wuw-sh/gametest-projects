@@ -1,5 +1,11 @@
 # All My Gametest Projects
 
+## Install
+```
+git clone https://github.com/wuw-sh/gametest-projects.git
+npm run start
+```
+
 ## Project About
 - This project is Gametest so it can be used on mobile or computer. This project is developed with TypeScript (ts) and compiled into JavaScript (js).
 
